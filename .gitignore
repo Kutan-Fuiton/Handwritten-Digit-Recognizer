@@ -1,0 +1,19 @@
+# Ignore compiled Python bytecode files
+*.pyc
+
+# Ignore Python cache directories
+__pycache__/
+
+# Ignore local environment settings
+.env
+.env/
+
+# Ignore build and distribution directories
+build/
+dist/
+*.egg-info/
+
+# Ignore unit test and coverage reports
+.coverage
+htmlcov/
+.pytest_cache/

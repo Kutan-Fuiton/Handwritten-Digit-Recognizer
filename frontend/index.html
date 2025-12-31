@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Digit Recognizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Fullscreen Drawing Canvas -->
+    <canvas id="canvas"></canvas>
+
+    <!-- Floating Controls -->
+    <div class="controls">
+        <button onclick="clearCanvas()">Clear</button>
+        <button onclick="predictDigit()">Predict</button>
+        <button id="theme-toggle">Toggle Theme</button>
+        <button id="info-toggle">Info</button>
+        <p id="result"></p>
+    </div>
+
+    <!-- Toggleable Info Panel -->
+    <div id="info-panel">
+        <button id="close-info">✖</button>
+        <h3>Project Information</h3>
+
+        <p><strong>Overview:</strong> This is a simple MNIST digit recognizer. Draw a digit (0-9) on the canvas and
+            click "Predict" to see the model's guess.</p>
+
+        <p><strong>How to Use:</strong></p>
+        <ul>
+            <li>Draw a number using your mouse.</li>
+            <li>Click "Predict" to see the AI’s prediction.</li>
+            <li>Click "Clear" to reset the canvas.</li>
+            <li>Toggle between dark and light mode using "Toggle Theme".</li>
+        </ul>
+
+        <p><strong>How it Works:</strong></p>
+        <ul>
+            <li>The backend uses a Convolutional Neural Network (CNN) trained on the MNIST dataset.</li>
+            <li>The drawn image is preprocessed: resized to 28x28, thresholded, normalized, and sent to the model.</li>
+            <li>The model predicts the digit and sends it back to the frontend.</li>
+        </ul>
+
+        <p><strong>Features:</strong> Smooth glassy UI, dark/light mode, responsive canvas, and interactive buttons.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
