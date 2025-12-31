@@ -1,6 +1,12 @@
-# Handwritten Digit Recognizer
+---
+title: Digit Recognizer
+emoji: 🐠
+colorFrom: yellow
+colorTo: purple
+sdk: docker
+pinned: false
+license: mit
+short_description: Deploying my digit-recognizer
+---
 
-stuffs in progress
-
-model part done, now will make the frontend and backend a little b8r and interactive, then will move towards deployment
-
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference

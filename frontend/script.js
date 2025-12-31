@@ -37,14 +37,31 @@ function clearCanvas() {
 }
 
 async function predictDigit() {
-  const image = canvas.toDataURL("image/png", 0.5);
-  const response = await fetch("/predict", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ image })
-  });
-  const data = await response.json();
-  document.getElementById("result").innerText = "Prediction: " + data.prediction;
+    const resultElement = document.getElementById("result");
+    resultElement.innerText = "Thinking...";
+
+    try {
+        const image = canvas.toDataURL("image/png", 0.5);
+        const response = await fetch("/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ image })
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            resultElement.innerText = "Error: " + data.error;
+            resultElement.style.color = "red";
+        } else {
+            resultElement.innerText = "Prediction: " + data.prediction;
+            // Reset color based on theme
+            resultElement.style.color = document.body.classList.contains("dark") ? "white" : "black";
+        }
+    } catch (err) {
+        resultElement.innerText = "Connection Failed!";
+        console.error(err);
+    }
 }
 
 const toggleBtn = document.getElementById("theme-toggle");
