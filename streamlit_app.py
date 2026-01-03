@@ -1,7 +1,8 @@
 import streamlit as st
 import numpy as np
 import cv2
-from keras.models import load_model
+# from keras.models import load_model
+from tensorflow import keras
 from streamlit_drawable_canvas import st_canvas
 
 # ------------------ PAGE CONFIG ------------------
@@ -12,10 +13,13 @@ st.set_page_config(
 
 # ------------------ LOAD MODEL ------------------
 @st.cache_resource
-def load_cnn_model():
-    return load_model("model/mnist_cnn.h5")
+def load_cnn():
+    return keras.models.load_model(
+        "model/mnist_cnn.h5",
+        compile=False
+    )
 
-model = load_cnn_model()
+model = load_cnn()
 
 # ------------------ PREPROCESS (UNCHANGED LOGIC) ------------------
 def preprocess_image(img):
